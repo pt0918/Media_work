@@ -5,7 +5,7 @@
 function animation_init(MyContext)
 {
     var timer = setInterval(function(){
-        if(start.complete && reed.complete && cloud.complete && boat.complete)
+        if(start.complete && reed.complete && cloud.complete && boat.complete && enter.complete)
         {
             animation_play(MyContext);
             //MyContext.drawImage(pic, 0, 0);//这里现在只是一个简单的绘制，要做成平移的动画
@@ -16,8 +16,17 @@ function animation_init(MyContext)
 
 function main_init()
 {   
-    MainContext.drawImage(MainBackground,0,0);
-    SceneContext.drawImage(MainCanvas,0,0);
+    var timer = setInterval(function(){
+        if(MainBackground.complete)
+        {
+            MainContext.drawImage(MainBackground,0,0);
+            clearInterval(timer);
+        }
+    },50)
+    
+    MainCanvas.style.display ="none";
+
+    //还要在这个上面进行事件注册
     //这个函数实现对于主界面的初始化（包含着对于图片上按钮的事件注册）
 }
 

@@ -11,6 +11,19 @@ function main_register()
 }
 function OnAnimationMouseDown(e)
 {
-    main_init();
-    SceneCanvas.removeEventListener("mousedown",OnAnimationMouseDown);
+    var point = {x:0,y:0};//起始点585 480 终止点700 535
+    point.x = e.clientX;
+    point.y = e.clientY;
+    
+    point = windowToCanvas(SceneCanvas,point);
+    //console.log(point);
+    if((point.x < 700 && point.x >585)&&(point.y < 535 && point.y > 480))
+    {
+
+        MainCanvas.style.display = "block";
+        console.log(MainCanvas.width);
+        console.log(MainCanvas.height)
+        SceneCanvas.style.display = "none";
+    }
+    //SceneCanvas.removeEventListener("mousedown",OnAnimationMouseDown);
 }
